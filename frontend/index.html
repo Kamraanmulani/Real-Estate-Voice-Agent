@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miss Riverwood - AI Voice Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>Riverwood Estate</h1>
+                    <p>Luxury Living Redefined</p>
+                </div>
+            </div>
+            <div class="status-badge" id="statusBadge">
+                <div class="status-dot"></div>
+                <span>Ready</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Agent Avatar Section -->
+            <div class="agent-section">
+                <div class="agent-avatar" id="agentAvatar">
+                    <div class="avatar-ring"></div>
+                    <div class="avatar-ring-2"></div>
+                    <div class="avatar-image">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="url(#gradient1)"/>
+                            <path d="M12 6C13.1 6 14 6.9 14 8C14 9.1 13.1 10 12 10C10.9 10 10 9.1 10 8C10 6.9 10.9 6 12 6Z" fill="white"/>
+                            <path d="M12 11C9.33 11 7.55 12.67 7.05 14.88C6.95 15.33 7.23 15.77 7.68 15.88C8.13 15.98 8.58 15.7 8.68 15.25C9.03 13.67 10.33 12.5 12 12.5C13.67 12.5 14.97 13.67 15.32 15.25C15.42 15.7 15.87 15.98 16.32 15.88C16.77 15.77 17.05 15.33 16.95 14.88C16.45 12.67 14.67 11 12 11Z" fill="white"/>
+                            <defs>
+                                <linearGradient id="gradient1" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#764ba2"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="voice-waves">
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                    </div>
+                </div>
+                <h2 class="agent-name">Miss Riverwood</h2>
+                <p class="agent-title">Your Personal Real Estate Assistant</p>
+                <p class="agent-description">
+                    Speak naturally in Hindi, Hinglish, or English. I'm here to help you with property inquiries, bookings, and more!
+                </p>
+            </div>
+
+            <!-- Call Controls -->
+            <div class="controls">
+                <button id="startCallBtn" class="btn btn-primary">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M15.5 1H8.5C7.12 1 6 2.12 6 3.5V20.5C6 21.88 7.12 23 8.5 23H15.5C16.88 23 18 21.88 18 20.5V3.5C18 2.12 16.88 1 15.5 1Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 18H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span>Start Call</span>
+                </button>
+                <button id="endCallBtn" class="btn btn-danger" style="display: none;">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M23 16.92V19.92C23.0011 20.4832 22.7599 21.0216 22.3334 21.4011C21.9069 21.7807 21.3351 21.9669 20.7575 21.9148C17.0232 21.5006 13.4433 20.1892 10.3475 18.0848C7.49537 16.1749 5.12537 13.6649 3.32325 10.6548C1.14001 7.38778 0.0800055 3.60278 0.51325 0.237798C0.566265 -0.373902 0.741248 -0.980002 1.10325 -1.4208C1.46525 -1.8616 1.98501 -2.0904 2.51325 -2.0908H5.51325C6.49075 -2.1004 7.30775 -1.3144 7.43325 -0.2224C7.54775 0.7776 7.76825 1.7552 8.09325 2.692C8.3525 3.4304 8.16325 4.2496 7.60325 4.808L6.39325 6.108C8.26325 9.3072 10.9933 12.2224 14.0933 14.2C15.3933 13.084 16.3933 12 17.3933 11.5296C18.1317 11.2704 18.9509 11.4596 19.5093 12.0196L20.8093 13.3296C21.4757 14.0984 21.5309 15.2568 20.9493 16.0904C20.3677 16.924 19.2509 17.3144 18.1293 17.0848C17.1917 16.8092 16.2293 16.6408 15.2533 16.5796Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span>End Call</span>
+                </button>
+            </div>
+
+            <!-- Conversation Display -->
+            <div class="conversation-container" id="conversationContainer">
+                <div class="conversation-header">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h3>Conversation</h3>
+                </div>
+                <div class="messages" id="messages">
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="9" cy="9" r="1" fill="currentColor"/>
+                            <circle cx="15" cy="9" r="1" fill="currentColor"/>
+                        </svg>
+                        <p>Start a call to begin your conversation</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pipeline Visualization -->
+            <div class="pipeline-container">
+                <h3 class="pipeline-title">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    AI Pipeline
+                </h3>
+                <div class="pipeline">
+                    <div class="pipeline-step" id="sttStep">
+                        <div class="step-icon">🎤</div>
+                        <div class="step-content">
+                            <h4>Speech-to-Text</h4>
+                            <p class="step-status">OpenAI Whisper</p>
+                        </div>
+                        <div class="step-indicator"></div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-step" id="llmStep">
+                        <div class="step-icon">🧠</div>
+                        <div class="step-content">
+                            <h4>AI Processing</h4>
+                            <p class="step-status">GPT-4 + Memory</p>
+                        </div>
+                        <div class="step-indicator"></div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-step" id="ttsStep">
+                        <div class="step-icon">🔊</div>
+                        <div class="step-content">
+                            <h4>Text-to-Speech</h4>
+                            <p class="step-status">ElevenLabs</p>
+                        </div>
+                        <div class="step-indicator"></div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-step" id="memoryStep">
+                        <div class="step-icon">💾</div>
+                        <div class="step-content">
+                            <h4>Memory</h4>
+                            <p class="step-status">Neo4j + Qdrant</p>
+                        </div>
+                        <div class="step-indicator"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by LiveKit WebRTC • Ultra-low latency real-time voice</p>
+            <div class="footer-stats">
+                <span id="latencyDisplay">Latency: --ms</span>
+                <span class="separator">•</span>
+                <span id="qualityDisplay">Quality: Excellent</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Audio Element for playback -->
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
