@@ -62,7 +62,7 @@ def transcribe_file(path: str, language: str = None, prompt: str = None, use_gro
                     transcript = client.audio.transcriptions.create(
                         file=(audio_path.name, audio_file.read()),
                         model="whisper-large-v3-turbo",
-                        prompt=prompt or "Riverwood Estate, Hindi, English, Hinglish, apartment, plot, BHK, construction, booking, Namaste, chai, khana",
+                        prompt=prompt or "Real Estate Agency, Hindi, English, Hinglish, apartment, plot, BHK, construction, booking, Namaste, chai, khana",
                         response_format="text",
                         language=language,  # 'hi' for Hindi, 'en' for English, None for auto-detect
                         temperature=0.0  # More deterministic for better accuracy

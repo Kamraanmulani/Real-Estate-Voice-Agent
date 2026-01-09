@@ -64,7 +64,7 @@ def make_call(to_number: str):
         print(f"\nCall SID: {call.sid}")
         print(f"Status: {call.status}")
         print(f"\n💡 The phone will ring on {to_number}")
-        print("When you answer, Miss Riverwood will greet you!")
+        print("When you answer, the Real estate Voice Agent will greet you!")
         print("Speak in Hindi, Hinglish, or English!")
         print("\n" + "="*70 + "\n")
         
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     # YOUR INDIAN MOBILE NUMBER
     TO_NUMBER = "+919136812065"  # Replace with your number
     
-    print("\n🚀 Miss Riverwood Simple Call System")
+    print("\n🚀 Real estate Voice Agent Simple Call System")
     print("="*70)
     
     if not TO_NUMBER.startswith("+91"):

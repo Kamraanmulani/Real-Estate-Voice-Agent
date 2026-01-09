@@ -60,12 +60,12 @@ def greet_user() -> str:
         return "Namaste ji! Chai pee li? Bataiye, aaj kis baare mein jaankari chaiye apko"
     if 12 <= hour < 16:
         return "Namaste ji! Khana ho gaya apka? Bataiye, aaj kis baare mein jaankari chaiye apko"
-    if 16 <= hour < 18:
-        return "Namaste ji! Chai pee li? Bataiye, aaj kis baare mein jaankari chaiye apko"
-    return "Namaste! Main Miss Riverwood hoon. Aaj main aapki kya madad kar sakti hoon?"
+    if 16 <= hour < 23:
+        return "Namaste ji! Chaai pee li? Bataiye, aaj kis baare mein jaankari chaiye apko"
+    return "Namaste! Main Real estate Voice Agent hoon. Aaj main aapki kya madad kar sakti hoon?"
 
 
-SYSTEM_PROMPT = """You are Miss Riverwood — a warm, professional construction assistant for Riverwood Estate.
+SYSTEM_PROMPT = """You are Real estate Voice Agent — a warm, professional real estate assistant for Real Estate Agency.
 
 GOAL:
 - Build a friendly bond, not just answer questions.
@@ -73,12 +73,13 @@ GOAL:
 - Keep responses concise and voice-friendly (< 80 words for fast response).
 
 TONE & LANGUAGE:
-- Speak naturally like a human. Prefer Hindi or Hinglish for Indian users; switch to English if the user speaks English.
+- Speak naturally like a human female . Prefer Hindi or Hinglish for Indian users; switch to English if the user speaks English.
 - Mirror the user's language and formality.
 - Use short, clear sentences suitable for TTS. No emojis.
 - Natural examples you can use when appropriate:
   - "Namaste Sir, aaj aapne chai pi?"
   - "Kal bola tha weekend visit karne wale the — kaisa raha experience?"
+  
 
 MEMORY & CONTEXT:
 - If relevant memories are provided, reference them smoothly.
@@ -206,7 +207,7 @@ class VoiceSession:
             # STEP 1: STT (0.2s with Groq)
             # ============================================================
             stt_start = time.time()
-            domain_prompt = "Riverwood Estate, apartment, plot, BHK, booking, construction, foundation, Namaste, chai, khana"
+            domain_prompt = "Real Estate Agency, apartment, plot, BHK, booking, construction, foundation, Namaste, chai, khana"
             user_text = transcribe_file(stt_input, prompt=domain_prompt)
             stt_time = time.time() - stt_start
             
@@ -223,7 +224,7 @@ class VoiceSession:
             
             # Check for exit keywords
             if any(word in user_text.lower() for word in ["goodbye", "bye", "alvida", "exit", "end call", "thank you bye"]):
-                farewell = "Thank you for calling Riverwood Estate! Dhanyavaad! Have a great day. Alvida!"
+                farewell = "Thank you for calling Real Estate Agency! Dhanyavaad! Have a great day. Alvida!"
                 audio_out = tts_from_text(farewell, session_id=self.session_id)
                 
                 if audio_out and os.path.exists(audio_out):
@@ -457,7 +458,7 @@ def voice_stream(ws):
 
 if __name__ == "__main__":
     print("\n" + "="*70)
-    print("🎤 Miss Riverwood - Real-time WebRTC Voice Agent")
+    print("🎤 Real estate Voice Agent - Real-time WebRTC Voice Agent")
     print("="*70)
     print(f"\n✨ Features:")
     print(f"   • Real-time Hindi/English/Hinglish voice conversations")

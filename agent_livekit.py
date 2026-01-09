@@ -54,10 +54,10 @@ def greet_user() -> str:
         return "Namaste ji! Khana ho gaya apka? Bataiye, aaj kis baare mein jaankari chaiye apko"
     if 16 <= hour < 18:
         return "Namaste ji! Chai pee li? Bataiye, aaj kis baare mein jaankari chaiye apko"
-    return "Namaste! Main Miss Riverwood hoon. Aaj main aapki kya madad kar sakti hoon?"
+    return "Namaste! Main Real estate Voice Agent hoon. Aaj main aapki kya madad kar sakti hoon?"
 
 
-SYSTEM_PROMPT = """You are Miss Riverwood — a warm, professional construction assistant for Riverwood Estate.
+SYSTEM_PROMPT = """You are Real estate Voice Agent — a warm, professional real estate assistant for Real Estate Agency.
 
 GOAL:
 - Build a friendly bond, not just answer questions.
@@ -316,7 +316,7 @@ async def entrypoint(ctx: JobContext):
 if __name__ == "__main__":
     """Run LiveKit agent."""
     print("\n" + "="*60)
-    print("🎤 Miss Riverwood - LiveKit WebRTC Agent")
+    print("🎤 Real estate Voice Agent - LiveKit WebRTC Agent")
     print("="*60)
     print("\n✨ Features:")
     print("   • Ultra-fast real-time Hindi/English voice streaming")

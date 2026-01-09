@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Miss Riverwood — Twilio Phone Call Agent (Groq + Memory)
+Realestate Voice Agent — Twilio Phone Call Agent (Groq + Memory)
 
 This file merges:
   - The conversational logic, memory usage, and relationship-building style
@@ -62,7 +62,7 @@ AUDIO_DIR.mkdir(parents=True, exist_ok=True)
 class JsonlMemoryStore:
     """Minimal JSONL memory store (id, text, reply, ts, session_id)."""
 
-    def __init__(self, file_path: str = str(MEMORY_DIR / "miss_riverwood_twilio.jsonl")):
+    def __init__(self, file_path: str = str(MEMORY_DIR / "real_estate_voice_agent_twilio.jsonl")):
         self.file_path = file_path
         Path(self.file_path).parent.mkdir(parents=True, exist_ok=True)
         if not os.path.exists(self.file_path):
@@ -123,7 +123,7 @@ def greet_user() -> str:
         return "Namaste ji! Khana ho gaya apka? Bataiye, aaj kis baare mein jaankari chaiye apko"
     if 16 <= hour < 18:
         return "Namaste ji! Chai pee li? Bataiye, aaj kis baare mein jaankari chaiye apko"
-    return "Namaste! Main Miss Riverwood hoon. Aaj main aapki kya madad kar sakti hoon?"
+    return "Namaste! Main Real estate Voice Agent hoon. Aaj main aapki kya madad kar sakti hoon?"
 
 
 def generate_elevenlabs_audio(text: str, voice_id: str, api_key: str) -> bytes:
@@ -147,7 +147,7 @@ def generate_elevenlabs_audio(text: str, voice_id: str, api_key: str) -> bytes:
 
 # Main system prompt from your agent.py (slightly adapted for phone calls)
 SYSTEM_PROMPT = """
-You are Miss Riverwood — a warm, professional construction assistant for Riverwood Estate.
+You are Realestate Voice Agent — a warm, professional real estate assistant for Real Estate Agency.
 
 GOAL:
 - Build a friendly bond, not just answer questions.
@@ -203,7 +203,7 @@ def index():
     """Health check / basic info."""
     return {
         "status": "online",
-        "service": "Miss Riverwood Twilio Phone Agent",
+        "service": "Real estate Voice Agent Twilio Phone Agent",
         "groq_available": bool(os.getenv("GROQ_API_KEY")),
         "twilio_configured": bool(os.getenv("TWILIO_ACCOUNT_SID")),
         "memory_backend": type(memory).__name__,
@@ -327,7 +327,7 @@ def process_speech():
     lower = user_speech.lower()
     if any(word in lower for word in ["goodbye", "bye", "alvida", "exit", "end call"]):
         farewell = (
-            "Thank you for calling Riverwood Estate! Have a great day. Goodbye!"
+            "Thank you for calling Real estate! Have a great day. Goodbye!"
         )
         print(f"🤖 Assistant (farewell): {farewell}")
         
@@ -488,7 +488,7 @@ def status():
 
 if __name__ == "__main__":
     print("\n" + "=" * 70)
-    print("🚀 Starting Miss Riverwood Twilio Phone Agent")
+    print("🚀 Starting Real estate Voice Agent Twilio Phone Agent")
     print("=" * 70)
 
     required_vars = {

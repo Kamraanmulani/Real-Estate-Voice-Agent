@@ -220,15 +220,15 @@ def greet_user() -> str:
     if 16 <= hour < 18:
         return "Namaste ji! Chai pee li? Bataiye, aaj kis baare mein jaankari chaiye apko"
     # Fallback (evening/night or 11:00-11:59 which wasn't explicitly defined)
-    return "Namaste! Main Miss Riverwood hoon. Aaj main aapki kya madad kar sakti hoon?"
+    return "Namaste! Main Real estate Voice Agent hoon. Aaj main aapki kya madad kar sakti hoon?"
 
 
 def main_loop():
-    print("📞 Miss Riverwood — Voice Call Agent")
+    print("📞 Real estate Voice Agent — Voice Call Agent")
     print("═" * 60)
     mem = MemoryStore()
     system_prompt = """
-You are Miss Riverwood — a warm, professional construction assistant for Riverwood Estate.
+You are Real estate Voice Agent — a warm, professional real estate assistant for Real Estate Agency.
 
 GOAL:
 - Build a friendly bond, not just answer questions.
@@ -319,7 +319,7 @@ Every interaction should feel personal, warm, and memorable.
                 for word in ["goodbye", "bye", "alvida", "exit", "end call"]
             ):
                 farewell = (
-                    "Thank you for calling Riverwood Estate! Have a great day. Goodbye!"
+                    "Thank you for calling Real Estate Agency! Have a great day. Goodbye!"
                 )
                 print(f"🤖 Assistant: {farewell}")
                 audio_out = tts_from_text(farewell, session_id="local")

@@ -1,8 +1,8 @@
-# 🏗️ Miss Riverwood Voice Agent - Technical Documentation
+# 🏗️ Realestate Voice Agent - Technical Documentation
 
 ## 📋 Executive Summary
 
-**Miss Riverwood** is a production-ready, multilingual (Hindi/Hinglish/English) AI voice agent for real estate customer support. Built with WebRTC for real-time voice interaction, it leverages cutting-edge AI models for ultra-fast speech recognition, natural language understanding, intelligent response generation, and human-like voice synthesis.
+**The Realestate Voice Agent** is a production-ready, multilingual (Hindi/Hinglish/English) AI voice agent for real estate customer support. Built with WebRTC for real-time voice interaction and Twilio for phone calls, it leverages cutting-edge AI models for ultra-fast speech recognition, natural language understanding, intelligent response generation, and human-like voice synthesis.
 
 **Key Metrics:**
 - **Response Latency**: ~900ms end-to-end (sub-second!)
@@ -72,11 +72,43 @@
                                       │                                │
                                       │  📄 property_pricing (50 docs) │
                                       │  📄 property_specs (19 docs)   │
-                                      │  📄 riverwood_faq (14 docs)    │
+                                      │  📄 property_faq (14 docs)      │
                                       │  💾 User memories (graph)      │
                                       │  🔗 Entity relationships       │
                                       └────────────────────────────────┘
 ```
+
+## 📱 Twilio Phone Integration
+
+The system now supports real phone interactions through Twilio, enabling both inbound and outbound calls.
+
+### **Architecture Comparison**
+
+| Feature | WebRTC Agent | Twilio Phone Agent |
+|---------|-------------|-------------------|
+| **Protocol** | WebSocket (Browser) | SIP/PSTN (Phone Network) |
+| **Audio** | Raw PCM Stream | Twilio /voice Webhook |
+| **TTS Engine** | ElevenLabs Streaming | ElevenLabs Generated Files |
+| **Usage** | Website Integration | Customer Support Hotline |
+| **Script** | `agent_webrtc_integrated.py` | `twilio_simple_agent.py` |
+
+### **Twilio Agent Workflow**
+
+1. **Incoming Call**: Twilio hits `/voice` webhook.
+2. **Greeting**: Agent generates an ElevenLabs audio greeting ("Namaste...") and plays it.
+3. **Speech Capture**: `<Gather>` verb records user speech.
+4. **Processing**:
+   - `/process_speech` receives transcribed text (or audio for processing).
+   - **LLM**: Groq generates a concise response (< 40 words).
+   - **TTS**: ElevenLabs generates Hindi/English audio.
+   - **Playback**: Audio file served via Flask and played back to caller.
+5. **Loop**: Cycle repeats until user says "Goodbye".
+
+### **Setup for Twilio**
+1. Run `python twilio_simple_agent.py`.
+2. Start Ngrok: `ngrok http 5000`.
+3. Configure Twilio Webhook to `https://<ngrok-id>.ngrok-free.app/voice`.
+4. Run `python make_call_simple.py` to test outbound calls.
 
 ---
 
@@ -118,7 +150,7 @@ Audio Chunk → WebSocket → Flask Server → Groq Whisper → Transcript
 transcript = client.audio.transcriptions.create(
     file=audio_file,
     model="whisper-large-v3-turbo",  # Ultra-fast variant
-    prompt="Riverwood Estate, Hindi, English, Hinglish, BHK, apartment",
+    prompt="Realestate, Hindi, English, Hinglish, BHK, apartment",
     response_format="text",
     language=None,  # Auto-detect
     temperature=0.0  # Deterministic for accuracy
@@ -160,7 +192,7 @@ Collection: property_pricing (50 documents)
 |----------|----------|------------|
 | Pricing | price, cost, payment, bhk, ₹, lakh, crore | `property_pricing` |
 | Specs | floor, sqft, area, amenity, layout, plan | `property_specifications` |
-| FAQ | question, faq, how, what, when, tell me | `riverwood_faq` |
+| FAQ | question, faq, how, what, when, tell me | `property_faq` |
 | General | (no match) | Memory only |
 
 **Technology Stack:**
@@ -218,7 +250,7 @@ Context + Transcript → Groq LLaMA 3.3 → Natural Language Response
 **Prompt Engineering:**
 ```python
 System Prompt:
-  "You are Miss Riverwood — warm, professional construction assistant.
+  "You are Real estate Voice Agent — warm, professional real estate assistant.
    Keep responses concise (< 80 words), voice-friendly, natural.
    Reference user's name and past conversations when relevant."
 
@@ -452,7 +484,7 @@ User Query
 │ Keyword Detection (Regex)             │
 │ • "price" → property_pricing           │
 │ • "spec" → property_specifications     │
-│ • "question" → riverwood_faq           │
+│ • "question" → realestate_faq          │
 └───────────────┬───────────────────────┘
                 ↓
 ┌───────────────────────────────────────┐
@@ -862,7 +894,7 @@ TOTAL (user-facing)     ~6850ms   100%
 
 ## 💡 Conclusion
 
-**Miss Riverwood** is a production-ready, cost-optimized AI voice agent that delivers:
+**Real estate Voice Agent** is a production-ready, cost-optimized AI voice agent that delivers:
 
 ✅ **Ultra-fast responses** (< 1 second server-side)  
 ✅ **High-quality conversations** (95%+ accuracy, human-like voice)  

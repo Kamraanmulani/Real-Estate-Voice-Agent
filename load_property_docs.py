@@ -83,7 +83,7 @@ def load_property_documents(docs_folder: str = "document_loader"):
         docs_folder: Path to folder containing documents
     """
     print("\n" + "="*70)
-    print("🏠 Riverwood Estate - Document Loader")
+    print("🏠 Real estate - Document Loader")
     print("="*70 + "\n")
     
     # Create docs folder if it doesn't exist
@@ -233,7 +233,7 @@ def load_property_documents(docs_folder: str = "document_loader"):
     # List all collections
     collections = qdrant.get_collections()
     for collection in collections.collections:
-        if collection.name in ['pricing_inventory', 'property_specifications', 'riverwood_faq']:
+        if collection.name in ['pricing_inventory', 'property_specifications', 'real_estate_faq']:
             count = qdrant.count(collection.name)
             print(f"   - {collection.name}: {count.count} chunks")
     

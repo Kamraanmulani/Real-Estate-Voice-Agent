@@ -132,7 +132,7 @@ class MemoryStore:
                     model=EMBED_MODEL,
                     api_key=os.getenv("OPENAI_API_KEY")
                 )
-                print("✅ Document retrieval client initialized (property_pricing, property_specifications, riverwood_faq)")
+                print("✅ Document retrieval client initialized (property_pricing, property_specifications, real_estate_faq)")
             except Exception as e:
                 print(f"⚠️ Document retrieval initialization failed: {e}")
                 self._doc_client = None
@@ -190,7 +190,7 @@ class MemoryStore:
         
         # Check for FAQ/question keywords
         if re.search(r'\b(question|faq|query|ask|how|what|when|where|why|tell me|info|information)\b', query_lower):
-            return "riverwood_faq"
+            return "real_estate_faq"
         
         return None
     
@@ -200,7 +200,7 @@ class MemoryStore:
         
         Args:
             query: Search query
-            collection: Collection name (property_pricing, property_specifications, riverwood_faq)
+            collection: Collection name (property_pricing, property_specifications, real_estate_faq)
             k: Number of results to return
             
         Returns:
