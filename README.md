@@ -1,4 +1,4 @@
-# 🎤 Miss Riverwood - AI Voice Agent
+# 🎤 Real Estate Voice Agent - AI-Powered Conversational Calling System 
 
 > **Production-ready, multilingual voice assistant for real estate customer support**
 
@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-Production%20Ready-success.svg)](https://github.com)
 
-**Miss Riverwood** is an intelligent, real-time voice agent built with WebRTC that provides instant, context-aware responses in Hindi, Hinglish, and English. Powered by cutting-edge AI models from Groq, OpenAI, and ElevenLabs, it delivers sub-second response times with human-like voice quality.
+This is a intelligent, real-time voice agent built with WebRTC that provides instant, context-aware responses in Hindi, Hinglish, and English. Powered by cutting-edge AI models from Groq, OpenAI, and ElevenLabs, it delivers sub-second response times with human-like voice quality.
 
 ---
 
@@ -35,7 +35,7 @@
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd Riverwood_Challenge
+   cd Voice_Agent_Project
    ```
 
 2. **Set up virtual environment**
@@ -97,7 +97,7 @@
    This loads 83 document vectors into 3 collections:
    - `property_pricing` (50 documents)
    - `property_specifications` (19 documents)
-   - `riverwood_faq` (14 documents)
+   - `property_faq` (14 documents)
 
 7. **Launch the voice agent**
    ```bash
@@ -141,6 +141,41 @@ Agent: "We offer swimming pool, gym, clubhouse, children's play area..."
 
 ---
 
+## 📱 Twilio Phone Integration
+
+In addition to the WebRTC interface, the agent can handle real phone calls via Twilio.
+
+### Features
+- **ElevenLabs TTS**: High-quality Indian voice for phone responses
+- **Groq LLM**: Fast conversational intelligence
+- **Memory Persistence**: Remembers details across calls
+- **Outbound Calling**: Script to trigger calls to customers
+
+### Quick Start (Phone Agent)
+
+1. **Run the Twilio Agent Server**
+   ```bash
+   python twilio_simple_agent.py
+   ```
+
+2. **Expose Localhost via Ngrok**
+   ```bash
+   ngrok http 5000
+   ```
+
+3. **Configure Twilio Webhook**
+   - Update your `.env` with the new Ngrok URL (`NGROK_URL=https://your-url.ngrok-free.app`)
+   - Or manually set the Voice Webhook in Twilio Console to: `https://your-url.ngrok-free.app/voice`
+
+4. **Make a Test Call**
+   - Update `TO_NUMBER` in `make_call_simple.py` to your phone number.
+   - Run the script:
+     ```bash
+     python make_call_simple.py
+     ```
+
+---
+
 ## 🏗️ Architecture
 
 ```
@@ -180,7 +215,7 @@ Agent: "We offer swimming pool, gym, clubhouse, children's play area..."
                     │   KNOWLEDGE BASE LAYER        │
                     │ • property_pricing (50 docs)  │
                     │ • property_specs (19 docs)    │
-                    │ • riverwood_faq (14 docs)     │
+                    │ • property_faq (14 docs)      │
                     │ • User memories (graph)       │
                     └───────────────────────────────┘
 ```
@@ -268,6 +303,8 @@ Agent: "We offer swimming pool, gym, clubhouse, children's play area..."
 ```
 ZZZ_OpenAIBackup/
 ├── agent_webrtc_integrated.py    # Main Flask WebSocket server
+├── twilio_simple_agent.py         # Twilio Phone Agent (Flask + Groq + ElevenLabs)
+├── make_call_simple.py            # Script to test outbound calls
 ├── stt_service.py                 # Speech-to-text (Groq + OpenAI)
 ├── llm_service.py                 # LLM service (Groq + OpenAI)
 ├── tts_service.py                 # Text-to-speech (ElevenLabs)
@@ -545,8 +582,8 @@ We welcome contributions! Please follow these steps:
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/Kamraanmulani/Riverwood_Challenge/issues)
-- **Email**: support@riverwood.com
+- **Issues**: [GitHub Issues](https://github.com/Kamraanmulani/Voice_Agent_Project/issues)
+- **Email**: support@example.com
 - **Documentation**: See `docs/` directory
 
 ---
@@ -596,7 +633,7 @@ If you find this project helpful, please consider giving it a star! ⭐
 
 ---
 
-**Made with ❤️ by the Riverwood Team**
+**Made with ❤️ by the AI Team**
 
 **Version**: 1.0.0  
 **Last Updated**: November 11, 2025  

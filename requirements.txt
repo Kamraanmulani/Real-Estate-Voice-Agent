@@ -32,6 +32,13 @@ rank-bm25
 # Twilio Voice Bridge
 flask>=3.0.0
 flask-sock>=0.7.0
+twilio>=8.0.0
+
+# Vocode for Twilio Phone Integration (Real Voice Calls)
+vocode>=0.1.0
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
 
 # Telegram Voice Bot
 python-telegram-bot>=20.0
